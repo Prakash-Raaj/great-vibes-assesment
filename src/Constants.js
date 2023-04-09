@@ -36,3 +36,28 @@ export const jobDetails = [
     Employees: '51-200 employees',
   },
 ];
+
+export const formDetails = [
+  {
+    label: 'Job title',
+    placeholder: 'ex. UX UI Designer',
+    id: 'title',
+    double: false,
+    name: 'Job title',
+  },
+  {
+    label: 'Company name',
+    placeholder: 'ex. Google',
+    id: 'company',
+    double: false,
+    name: 'company name',
+  },
+
+  {
+    label: 'Industry',
+    placeholder: 'ex. Information Technology',
+    id: 'industry',
+    double: false,
+    name: 'industry',
+  },
+];
