@@ -20,10 +20,10 @@ const Step2Form = ({ form1Data, setIsFormVisible }) => {
       [name]: value,
     }));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // do api  post calls
-    postData(formData);
+    await postData(formData);
     setIsFormVisible(false);
   };
   return (
