@@ -28,6 +28,7 @@ const Jobs = () => {
           maxSalary={d.maxSalary}
           employees={d.totalEmp}
           radioValue={d.radioValue}
+          key={d.id}
           id={d.id}
         />
       ))}

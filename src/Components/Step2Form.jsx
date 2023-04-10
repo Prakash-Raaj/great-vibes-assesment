@@ -2,31 +2,32 @@ import React, { useState } from 'react';
 import FormFields from './FormFields';
 import { postData } from '../Utils/ApiCalls';
 
-const Step2Form = ({ form1Data }) => {
-  const [minExperience, setMinExperience] = useState();
-  const [maxExperience, setMaxExperience] = useState();
-  const [minSalary, setMinSalary] = useState();
-  const [maxSalary, setMaxSalary] = useState();
-  const [totalEmp, setTotalEmp] = useState();
-  const [radioValue, setRadioValue] = useState(0);
-
-  const formData = {
+const Step2Form = ({ form1Data, setIsFormVisible }) => {
+  const [formData, setFormData] = useState({
     form1Data: form1Data,
-    minExperience: minExperience,
-    maxExperience: maxExperience,
-    minSalary: minSalary,
-    maxSalary: maxSalary,
-    totalEmp: totalEmp,
-    radioValue: radioValue,
-  };
+    minExperience: '',
+    maxExperience: '',
+    minSalary: '',
+    maxSalary: '',
+    totalEmp: '',
+    radioValue: 0,
+  });
 
+  const handleRadioValue = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     // do api  post calls
     postData(formData);
+    setIsFormVisible(false);
   };
   return (
-    <div className="w-[577px] h-[564px] mx-auto bg-white rounded-[12px]">
+    <div className="w-[577px] mx-auto bg-white rounded-[12px]">
       <form onSubmit={handleSubmit}>
         <div className="p-[32px]">
           <div className="flex justify-between">
@@ -45,20 +46,20 @@ const Step2Form = ({ form1Data }) => {
                 id="experience"
                 double="w-[218.5px]"
                 isRequired={false}
-                name="experience"
+                name="minExperience"
                 type="number"
-                value={minExperience}
-                setValue={setMinExperience}
+                value={formData.minExperience}
+                setValue={setFormData}
               />
               <FormFields
                 placeholder="Maximum"
                 double="w-[218.5px]"
-                name="experience"
+                name="maxExperience"
                 isRequired={false}
                 split="mt-[20px]"
                 type="number"
-                value={maxExperience}
-                setValue={setMaxExperience}
+                value={formData.maxExperience}
+                setValue={setFormData}
               />
             </div>
             <div className="flex flex-row justify-between">
@@ -67,32 +68,32 @@ const Step2Form = ({ form1Data }) => {
                 placeholder="Minimum"
                 id="salary"
                 double="w-[218.5px]"
-                name="salary"
+                name="minSalary"
                 isRequired={false}
                 type="number"
-                value={minSalary}
-                setValue={setMinSalary}
+                value={formData.minSalary}
+                setValue={setFormData}
               />
               <FormFields
                 placeholder="Maximum"
                 double="w-[218.5px]"
-                name="salary"
+                name="maxSalary"
                 isRequired={false}
                 split="mt-[20px]"
                 type="number"
-                value={maxSalary}
-                setValue={setMaxSalary}
+                value={formData.maxSalary}
+                setValue={setFormData}
               />
             </div>
             <FormFields
               label="Total employee"
               id="total employee"
-              name="total employee"
+              name="totalEmp"
               isRequired={false}
               placeholder="ex.100"
-              type="number"
-              value={totalEmp}
-              setValue={setTotalEmp}
+              type="text"
+              value={formData.totalEmp}
+              setValue={setFormData}
             />
             <div className="mt-6">
               <span className="text-sm font-medium">Apply Type</span>
@@ -100,11 +101,9 @@ const Step2Form = ({ form1Data }) => {
                 <input
                   type="radio"
                   id="quick-apply"
-                  name="apply"
+                  name="radioValue"
                   value={1}
-                  onChange={(e) => {
-                    setRadioValue(e.target.value);
-                  }}
+                  onChange={handleRadioValue}
                 />
                  {' '}
                 <label
@@ -116,12 +115,10 @@ const Step2Form = ({ form1Data }) => {
                 <input
                   type="radio"
                   id="external-apply"
-                  name="apply"
+                  name="radioValue"
                   value={2}
                   className=" ml-4"
-                  onChange={(e) => {
-                    setRadioValue(e.target.value);
-                  }}
+                  onChange={handleRadioValue}
                 />
                  {' '}
                 <label

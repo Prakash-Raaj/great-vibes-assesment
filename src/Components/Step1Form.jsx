@@ -1,20 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import FormFields from './FormFields';
 
-const Step1Form = ({ setIsFormVisible, setOnNext, ...props }) => {
-  // console.log(props);
-
+const Step1Form = ({ setOnNext, form1Data, setForm1Data }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!props.jobTitle || !props.companyName || !props.industry) {
+    if (
+      !form1Data.jobTitle ||
+      !form1Data.companyName ||
+      !form1Data.industry
+    ) {
       alert('Please fill out the mandatory fields');
       return;
     }
-    console.log(props);
+    console.log(form1Data);
     setOnNext(true);
   };
   return (
-    <div className="w-[577px] h-[564px] mx-auto bg-white rounded-[12px]">
+    <div className="w-[577px]  mx-auto bg-white rounded-[12px]">
       <form onSubmit={handleSubmit}>
         <div className="p-[32px]">
           <div className="flex justify-between">
@@ -30,26 +32,26 @@ const Step1Form = ({ setIsFormVisible, setOnNext, ...props }) => {
               label="Job Title"
               placeholder="ex.UX UI Designer"
               id="jobTitle"
-              name="Job title"
-              value={props.jobTitle}
-              setValue={props.setJobTitle}
+              name="jobTitle"
+              value={form1Data.jobTitle}
+              setValue={setForm1Data}
             />
 
             <FormFields
               label="Company Name"
               placeholder="ex.Google"
               id="company"
-              name="CompanyName"
-              value={props.companyName}
-              setValue={props.setCompanyName}
+              name="companyName"
+              value={form1Data.companyName}
+              setValue={setForm1Data}
             />
             <FormFields
               label="Industry"
               placeholder="ex. Information Technology"
               id="industry"
-              name="Industry"
-              value={props.industry}
-              setValue={props.setIndustry}
+              name="industry"
+              value={form1Data.industry}
+              setValue={setForm1Data}
             />
             <div className="flex flex-row justify-between">
               <FormFields
@@ -58,8 +60,8 @@ const Step1Form = ({ setIsFormVisible, setOnNext, ...props }) => {
                 id="location"
                 double="w-[218.5px]"
                 name="location"
-                value={props.location}
-                setValue={props.setLocation}
+                value={form1Data.location}
+                setValue={setForm1Data}
                 isRequired={false}
               />
               <FormFields
@@ -67,9 +69,9 @@ const Step1Form = ({ setIsFormVisible, setOnNext, ...props }) => {
                 placeholder="ex.In-Office"
                 id="remote-type"
                 double="w-[218.5px]"
-                name="remote-type"
-                value={props.remoteType}
-                setValue={props.setRemoteType}
+                name="remoteType"
+                value={form1Data.remoteType}
+                setValue={setForm1Data}
                 isRequired={false}
               />
             </div>

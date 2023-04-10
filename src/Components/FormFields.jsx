@@ -20,7 +20,13 @@ const FormFields = ({
         ? 'focus:border-red-500 border-red-500'
         : '';
   }
-
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValue((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
   return (
     <>
       <div className="flex flex-col mt-6">
@@ -38,9 +44,7 @@ const FormFields = ({
           name={name}
           placeholder={placeholder}
           value={value}
-          onChange={(e) => {
-            setValue(e.currentTarget.value);
-          }}
+          onChange={handleChange}
           onBlur={() => {
             setTouched(true);
           }}
