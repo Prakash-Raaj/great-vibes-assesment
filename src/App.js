@@ -13,7 +13,7 @@ function App() {
       ) : (
         <>
           <NavBar setIsFormVisible={setIsFormVisible} />
-          <Jobs />
+          <Jobs setIsFormVisible={setIsFormVisible} />
         </>
       )}
     </div>

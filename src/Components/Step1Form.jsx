@@ -78,7 +78,7 @@ const Step1Form = ({ setOnNext, form1Data, setForm1Data }) => {
           </div>
           <div className="flex justify-end">
             <button
-              className="py-2 px-4 rounded-md bg-cyan-500 mt-24 "
+              className="py-2 px-4 rounded-md bg-cyan-500 mt-24  focus:outline-none"
               type="submit"
             >
               <span className="text-white">Next</span>

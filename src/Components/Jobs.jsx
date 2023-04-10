@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchData } from '../Utils/ApiCalls';
 import JobCard from './JobCard';
 
-const Jobs = () => {
+const Jobs = ({ setIsFormVisible }) => {
   const [jobDetails, setJobDetails] = useState([]);
   useEffect(() => {
     async function fetchJobDetails() {
@@ -10,8 +10,7 @@ const Jobs = () => {
       setJobDetails(res.data);
     }
     fetchJobDetails();
-  }, []);
-  console.log(jobDetails);
+  }, [setIsFormVisible]);
   return (
     <div className="grid  sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-7 auto-cols-auto p-[20px]">
       {jobDetails.map((d) => (

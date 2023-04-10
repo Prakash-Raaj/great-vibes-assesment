@@ -104,6 +104,7 @@ const Step2Form = ({ form1Data, setIsFormVisible }) => {
                   name="radioValue"
                   value={1}
                   onChange={handleRadioValue}
+                  className="focus:outline-none"
                 />
                  {' '}
                 <label
@@ -117,7 +118,7 @@ const Step2Form = ({ form1Data, setIsFormVisible }) => {
                   id="external-apply"
                   name="radioValue"
                   value={2}
-                  className=" ml-4"
+                  className="focus:outline-none ml-4"
                   onChange={handleRadioValue}
                 />
                  {' '}
@@ -132,7 +133,7 @@ const Step2Form = ({ form1Data, setIsFormVisible }) => {
           </>
           <div className="flex justify-end">
             <button
-              className="py-2 px-4 rounded-md bg-cyan-500 mt-24 "
+              className="py-2 px-4 rounded-md bg-cyan-500 mt-24 focus:outline-none"
               type="submit"
             >
               <span className="text-white">Save</span>
