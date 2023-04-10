@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { jobDetails } from '../Constants';
 import { fetchData } from '../Utils/ApiCalls';
 import JobCard from './JobCard';
 
